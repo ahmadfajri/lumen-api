@@ -11,4 +11,5 @@
 |
 */
 
+$router->get('/', 'ProdukController@index');
 $router->post('/produk', 'ProdukController@create');
