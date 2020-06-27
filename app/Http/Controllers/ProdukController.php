@@ -11,8 +11,8 @@ class ProdukController extends Controller
     {
         $this->validate($request, [
             'nama' => 'required|string',
-            'produk' => 'required|string',
-            'harga' => 'required|numeric'
+            'harga' => 'required|numeric',
+            'deskripsi' => 'required|string'
         ]);
 
         $data = $request->all();
