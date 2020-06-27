@@ -36,4 +36,26 @@ class ProdukController extends Controller
 
         return response()->json(["message" => "Success, Produk Added"]);
     }
+
+    public function update(Request $request, $id)
+    {
+        $produk = Produk::find($id);
+
+        if (!$produk) {
+            return response()->json(["message" => "Produk Not Found"], 404);
+        }
+
+        $this->validate($request, [
+            'nama' => 'required|string',
+            'harga' => 'required|numeric',
+            'deskripsi' => 'required|string'
+        ]);
+
+        $data = $request->all();
+        $produk->fill($data);
+
+        $produk->save();
+
+        return response()->json($produk);
+    }
 }
