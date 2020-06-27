@@ -16,6 +16,10 @@ class ProdukController extends Controller
     public function show($id)
     {
         $produk = Produk::find($id);
+
+        if (!$produk) {
+            return response()->json(["message" => "Not Found"], 404);
+        }
         return response()->json($produk);
     }
 
